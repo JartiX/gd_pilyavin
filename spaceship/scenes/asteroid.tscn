@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cg38ms1c6moi4"]
+
+[ext_resource type="Script" uid="uid://c7se07wt7gif4" path="res://scripts/linear_motion.gd" id="1_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://dx7la1mur32e2" path="res://assets/asteroid.png" id="1_akfqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21moi"]
+radius = 17.0
+
+[node name="Asteroid" type="Node2D" unique_id=399413671]
+position = Vector2(60, 40)
+script = ExtResource("1_6mo6b")
+
+[node name="Asteroid" type="Sprite2D" parent="." unique_id=297650656]
+texture = ExtResource("1_akfqu")
+
+[node name="AsteroidArea" type="Area2D" parent="." unique_id=40729404]
+
+[node name="AsteroidCollision" type="CollisionShape2D" parent="AsteroidArea" unique_id=845000426]
+shape = SubResource("CircleShape2D_21moi")
+
+[connection signal="area_entered" from="AsteroidArea" to="." method="_on_asteroid_area_area_entered"]
