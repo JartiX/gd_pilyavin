@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dje10nyjivpmf"]
+
+[ext_resource type="Script" uid="uid://bcduurcffrgor" path="res://scenes/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dy0br3fx20rgn" path="res://scenes/ui/hud.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bq75x2ya4wf6a" path="res://scenes/ui/menu.tscn" id="3_sugp2"]
+
+[node name="Main" type="Node2D" unique_id=1093662605]
+process_mode = 3
+script = ExtResource("1_0wfyh")
+
+[node name="World" type="Node2D" parent="." unique_id=1585868755]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2092056238]
+
+[node name="Hud" parent="UI" unique_id=1362811306 instance=ExtResource("1_o5qli")]
+
+[node name="Menu" parent="UI" unique_id=1434317320 instance=ExtResource("3_sugp2")]
+visible = false
+
+[connection signal="tree_exiting" from="." to="." method="save_settings"]

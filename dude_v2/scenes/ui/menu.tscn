@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bq75x2ya4wf6a"]
+
+[ext_resource type="Theme" uid="uid://qofn3xx0ldr7" path="res://main_theme.tres" id="1_7w7rl"]
+
+[node name="Menu" type="Node2D" unique_id=1434317320]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1327122982]
+offset_right = 1152.0
+offset_bottom = 649.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=631190]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1419504388]
+layout_mode = 2
+theme = ExtResource("1_7w7rl")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Pause"
