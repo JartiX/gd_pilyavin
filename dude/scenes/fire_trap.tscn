@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://rd2fodfiyexu"]
+
+[ext_resource type="Script" uid="uid://dcxsgkhatgwp2" path="res://scripts/fire_trap.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://us5vatimxaje" path="res://assets/traps/fire_off.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cqvuqjm54d4x0" path="res://assets/traps/fire_hit.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://8upau8wmltni" path="res://assets/traps/fire_on.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://c8xx56jkgatcb" path="res://audio/flame.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://cvl3dtehwfn7r" path="res://audio/flame_hit.ogg" id="6"]
+
+[sub_resource type="AtlasTexture" id="hit_0"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="hit_1"]
+atlas = ExtResource("3")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="hit_2"]
+atlas = ExtResource("3")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="hit_3"]
+atlas = ExtResource("3")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="on_0"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="on_1"]
+atlas = ExtResource("4")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="on_2"]
+atlas = ExtResource("4")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("hit_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("hit_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("hit_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("hit_3")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("on_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("on_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("on_2")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="base"]
+size = Vector2(16, 6)
+
+[sub_resource type="RectangleShape2D" id="trigger"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="flame"]
+size = Vector2(14, 24)
+
+[node name="FireTrap" type="StaticBody2D" unique_id=1385832595]
+texture_filter = 1
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049981539]
+position = Vector2(0, -16)
+sprite_frames = SubResource("frames")
+animation = &"off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=940534080]
+position = Vector2(0, -3)
+shape = SubResource("base")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=644831230]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1227248078]
+position = Vector2(0, -8)
+shape = SubResource("trigger")
+
+[node name="FlameArea" type="Area2D" parent="." unique_id=425063062]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea" unique_id=1651535129]
+position = Vector2(0, -19)
+shape = SubResource("flame")
+
+[node name="Sparks" type="CPUParticles2D" parent="." unique_id=513757523]
+position = Vector2(0, -17)
+emitting = false
+amount = 18
+lifetime = 0.6
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -1)
+spread = 35.0
+gravity = Vector2(0, 45)
+initial_velocity_min = 25.0
+initial_velocity_max = 65.0
+scale_amount_min = 0.5
+color = Color(1, 0.55, 0.08, 1)
+
+[node name="BurnTimer" type="Timer" parent="." unique_id=34123997]
+one_shot = true
+
+[node name="FlamePlayer" type="AudioStreamPlayer2D" parent="." unique_id=398504819]
+stream = ExtResource("5")
+max_distance = 613.0
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="." unique_id=580153536]
+stream = ExtResource("6")
+max_distance = 613.0

@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://du7ey8bycctms"]
+
+[ext_resource type="Texture2D" uid="uid://hlq7caxc5d4n" path="res://assets/background.png" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://cqrtgdyxpr6p2" path="res://scenes/dude.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://blaijgct3bhvb" path="res://scenes/rock.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bl3un6wfrfnu1" path="res://scenes/box.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cvvowrx7m8i8h" path="res://scenes/slime.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c72teyb5mdxio" path="res://scenes/fan.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://d261j6oad4gl2" path="res://scenes/button.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/fire_trap.tscn" id="8_fire"]
+[ext_resource type="AudioStream" path="res://audio/background.ogg" id="9_music"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21moi"]
+size = Vector2(576, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6b47"]
+size = Vector2(324, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqcr"]
+size = Vector2(33.75, 11.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uggrp"]
+size = Vector2(31.25, 672)
+
+[node name="Main" type="Node2D" unique_id=1225093027]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_music")
+volume_db = -12.0
+autoplay = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=920592070]
+scale = Vector2(2.2578125, 2.578125)
+texture = ExtResource("1_0wfyh")
+centered = false
+
+[node name="Dude" parent="." unique_id=1164826410 instance=ExtResource("2_sugp2")]
+position = Vector2(51, 469)
+
+[node name="FireTrap" parent="." instance=ExtResource("8_fire")]
+position = Vector2(420, 582)
+scale = Vector2(2, 2)
+
+[node name="Ground" type="Node2D" parent="." unique_id=1612212057]
+
+[node name="FloorLeft" type="StaticBody2D" parent="Ground" unique_id=966379221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/FloorLeft" unique_id=1430279397]
+position = Vector2(289, 621)
+shape = SubResource("RectangleShape2D_21moi")
+
+[node name="FloorRight" type="StaticBody2D" parent="Ground" unique_id=422247025]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/FloorRight" unique_id=636437049]
+position = Vector2(993, 622.25)
+shape = SubResource("RectangleShape2D_t6b47")
+
+[node name="Bridge" type="Node2D" parent="." unique_id=500748643]
+
+[node name="Plank" type="StaticBody2D" parent="Bridge" unique_id=638616878]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge/Plank" unique_id=418573394]
+position = Vector2(596.125, 587.625)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="Plank2" type="StaticBody2D" parent="Bridge" unique_id=1861413252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge/Plank2" unique_id=1539948416]
+position = Vector2(632, 590)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="Plank3" type="StaticBody2D" parent="Bridge" unique_id=654314523]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge/Plank3" unique_id=1617607733]
+position = Vector2(668, 593)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bridge/Plank3" unique_id=143648960]
+position = Vector2(705, 596)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bridge/Plank3" unique_id=570998404]
+position = Vector2(742, 593)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bridge/Plank3" unique_id=1046156015]
+position = Vector2(777, 589)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Bridge/Plank3" unique_id=264306894]
+position = Vector2(812, 588)
+shape = SubResource("RectangleShape2D_ysqcr")
+
+[node name="Rock" parent="." unique_id=81148230 instance=ExtResource("3_sugp2")]
+position = Vector2(899, 505)
+
+[node name="Box" parent="." unique_id=1407482768 instance=ExtResource("4_jyhfs")]
+position = Vector2(565, 136)
+
+[node name="Slime" parent="." unique_id=1517155612 instance=ExtResource("5_tbgi4")]
+position = Vector2(347, 567)
+
+[node name="Fan" parent="." unique_id=1424786248 instance=ExtResource("6_tefeu")]
+position = Vector2(571, 570)
+scale = Vector2(4, 4)
+
+[node name="Button" parent="." unique_id=691593086 instance=ExtResource("7_o6xl0")]
+position = Vector2(512, 567)
+node_path = NodePath("../Fan")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=813858532]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=633686696]
+position = Vector2(-13.75, 327)
+shape = SubResource("RectangleShape2D_uggrp")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=655311619]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=2018892302]
+position = Vector2(1168.375, 337)
+shape = SubResource("RectangleShape2D_uggrp")

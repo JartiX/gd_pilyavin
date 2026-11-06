@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://cqrtgdyxpr6p2"]
+
+[ext_resource type="Texture2D" uid="uid://dp8kkar0krgfq" path="res://assets/dude/idle.png" id="1_hkfyu"]
+[ext_resource type="Script" uid="uid://cpcd1e1ktvnxj" path="res://scripts/dude.gd" id="1_ke1di"]
+[ext_resource type="Texture2D" uid="uid://dqlnggoikdigg" path="res://assets/dude/double_jump.png" id="3_4k5av"]
+[ext_resource type="Texture2D" uid="uid://cfgyq8ftyw7lx" path="res://assets/dude/run.png" id="3_oeu1o"]
+[ext_resource type="AudioStream" uid="uid://ckxsed4pcs4ww" path="res://audio/step.ogg" id="5_step"]
+[ext_resource type="AudioStream" uid="uid://cac3wjwod6g57" path="res://audio/jump.ogg" id="6_jump"]
+[ext_resource type="AudioStream" uid="uid://bkdmouovvpco6" path="res://audio/landing.ogg" id="7_landing"]
+
+[sub_resource type="Animation" id="Animation_ke1di"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DudeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DudeSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hkfyu")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DudeSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_nt0p0"]
+resource_name = "double jump"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DudeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DudeSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("3_4k5av")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DudeSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_hkfyu"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DudeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DudeSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [11, 11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DudeSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("1_hkfyu"), ExtResource("1_hkfyu")]
+}
+
+[sub_resource type="Animation" id="Animation_4k5av"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_ff63b"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DudeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DudeSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("3_oeu1o"), ExtResource("1_hkfyu")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DudeSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ke1di"]
+_data = {
+&"RESET": SubResource("Animation_ke1di"),
+&"double jump": SubResource("Animation_nt0p0"),
+&"idle": SubResource("Animation_hkfyu"),
+&"jump": SubResource("Animation_4k5av"),
+&"walk": SubResource("Animation_ff63b")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21moi"]
+radius = 23.0
+height = 54.0
+
+[node name="Dude" type="CharacterBody2D" unique_id=1470930021]
+script = ExtResource("1_ke1di")
+
+[node name="DudeSprite" type="Sprite2D" parent="." unique_id=123644075]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hkfyu")
+hframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1714421878]
+libraries/ = SubResource("AnimationLibrary_ke1di")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1255873629]
+position = Vector2(2, 6)
+shape = SubResource("CapsuleShape2D_21moi")
+
+[node name="StepSound" type="AudioStreamPlayer2D" parent="." unique_id=1888745769]
+stream = ExtResource("5_step")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=287250534]
+stream = ExtResource("6_jump")
+
+[node name="LandingSound" type="AudioStreamPlayer2D" parent="." unique_id=1395378862]
+stream = ExtResource("7_landing")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1418647794]

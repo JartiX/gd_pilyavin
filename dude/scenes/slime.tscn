@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://cvvowrx7m8i8h"]
+
+[ext_resource type="Texture2D" uid="uid://5eke866o6ewm" path="res://assets/idle-run-44x30.png" id="1_371uh"]
+[ext_resource type="Script" path="res://scripts/slime.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/hit-44x30.png" id="3_hit"]
+[ext_resource type="Texture2D" path="res://assets/particles/particles-62x16.png" id="4_particles"]
+
+[sub_resource type="AtlasTexture" id="hit_0"]
+atlas = ExtResource("3_hit")
+region = Rect2(0, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="hit_1"]
+atlas = ExtResource("3_hit")
+region = Rect2(44, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="hit_2"]
+atlas = ExtResource("3_hit")
+region = Rect2(88, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="hit_3"]
+atlas = ExtResource("3_hit")
+region = Rect2(132, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="hit_4"]
+atlas = ExtResource("3_hit")
+region = Rect2(176, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
+atlas = ExtResource("1_371uh")
+region = Rect2(0, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
+atlas = ExtResource("1_371uh")
+region = Rect2(44, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("1_371uh")
+region = Rect2(88, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
+atlas = ExtResource("1_371uh")
+region = Rect2(132, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
+atlas = ExtResource("1_371uh")
+region = Rect2(176, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gstla"]
+atlas = ExtResource("1_371uh")
+region = Rect2(220, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
+atlas = ExtResource("1_371uh")
+region = Rect2(264, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
+atlas = ExtResource("1_371uh")
+region = Rect2(308, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnioy"]
+atlas = ExtResource("1_371uh")
+region = Rect2(352, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xjuo"]
+atlas = ExtResource("1_371uh")
+region = Rect2(396, 0, 44, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uggrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2gj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjw23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2npkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd6lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gstla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5wyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l8pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnioy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xjuo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("hit_0")}, {"duration": 1.0, "texture": SubResource("hit_1")}, {"duration": 1.0, "texture": SubResource("hit_2")}, {"duration": 1.0, "texture": SubResource("hit_3")}, {"duration": 1.0, "texture": SubResource("hit_4")}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="body_shape"]
+size = Vector2(32, 20)
+
+[sub_resource type="CanvasItemMaterial" id="particle_material"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Slime" type="StaticBody2D" unique_id=1517155612]
+script = ExtResource("2_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1879765951]
+sprite_frames = SubResource("SpriteFrames_uggrp")
+frame = 7
+frame_progress = 0.9000865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1326230010]
+position = Vector2(0, 5)
+shape = SubResource("body_shape")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+material = SubResource("particle_material")
+texture_filter = 1
+position = Vector2(0, -4)
+emitting = false
+amount = 10
+lifetime = 0.55
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_particles")
+emission_shape = 3
+emission_rect_extents = Vector2(14, 1)
+direction = Vector2(0, -1)
+spread = 65.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 35.0
+initial_velocity_max = 80.0
+scale_amount_min = 0.8
+scale_amount_max = 1.4
+anim_speed_min = 1.0
+anim_speed_max = 1.0
