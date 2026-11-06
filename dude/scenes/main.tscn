@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cvvowrx7m8i8h" path="res://scenes/slime.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c72teyb5mdxio" path="res://scenes/fan.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d261j6oad4gl2" path="res://scenes/button.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/fire_trap.tscn" id="8_fire"]
-[ext_resource type="AudioStream" path="res://audio/background.ogg" id="9_music"]
+[ext_resource type="PackedScene" uid="uid://rd2fodfiyexu" path="res://scenes/fire_trap.tscn" id="8_fire"]
+[ext_resource type="AudioStream" uid="uid://re63nsw7lg4k" path="res://audio/background.ogg" id="9_music"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21moi"]
 size = Vector2(576, 78)
@@ -24,7 +24,7 @@ size = Vector2(31.25, 672)
 
 [node name="Main" type="Node2D" unique_id=1225093027]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1537515290]
 stream = ExtResource("9_music")
 volume_db = -12.0
 autoplay = true
@@ -37,7 +37,7 @@ centered = false
 [node name="Dude" parent="." unique_id=1164826410 instance=ExtResource("2_sugp2")]
 position = Vector2(51, 469)
 
-[node name="FireTrap" parent="." instance=ExtResource("8_fire")]
+[node name="FireTrap" parent="." unique_id=1716395989 instance=ExtResource("8_fire")]
 position = Vector2(420, 582)
 scale = Vector2(2, 2)
 
@@ -98,7 +98,7 @@ position = Vector2(899, 505)
 position = Vector2(565, 136)
 
 [node name="Slime" parent="." unique_id=1517155612 instance=ExtResource("5_tbgi4")]
-position = Vector2(347, 567)
+position = Vector2(276, 568)
 
 [node name="Fan" parent="." unique_id=1424786248 instance=ExtResource("6_tefeu")]
 position = Vector2(571, 570)

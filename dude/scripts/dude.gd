@@ -17,6 +17,7 @@ var state = "idle"
 var bounce_delay: float = 0.0
 var held_box: RigidBody2D = null
 var step_delay: float = 0.0
+var hit_time: float = 0.0
 
 
 func _ready() -> void:
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	hit_time = maxf(0.0, hit_time - delta)
 	var was_on_floor = is_on_floor()
 	var previous_position = position
 	if not is_on_floor():
@@ -41,7 +43,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_SPEED
 		jump_sound.play()
 
-	if not is_on_floor():
+	if hit_time > 0:
+		state = "hit"
+	elif not is_on_floor():
 		state = "double jump"
 	elif direction != 0:
 		sprite.flip_h = direction < 0
@@ -96,6 +100,9 @@ func _physics_process(delta: float) -> void:
 func knockback(impulse: Vector2) -> void:
 	velocity = impulse
 	bounce_delay = BOUNCE_DELAY
+	hit_time = 0.35
+	state = "hit"
+	animation.play(state)
 
 
 func _input(event: InputEvent) -> void:
